@@ -1,0 +1,512 @@
+<!doctype html>
+<html ⚡ lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Home | Jacob Ebey</title>
+  <meta name="description" content="Jacob Ebey's portfolio.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js">
+  <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com/" crossorigin>
+  <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
+
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+  <style amp-custom>
+    :root {
+      --primary-color: #3a6ee8;
+      --primary-text-color: #ffffff;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14pt;
+    }
+
+    footer {
+      display: flex;
+      background-color: #000000;
+      color: #777777;
+      overflow: hidden;
+      padding: 1rem 3rem;
+      font-size: 0.8em;
+    }
+
+    footer>p {
+      flex: 1;
+    }
+
+    article {
+      padding: 0 3rem;
+    }
+
+    .article-header {
+      font-size: 2em;
+      margin-bottom: 3rem;
+    }
+
+    .actions {
+      margin-top: 3rem;
+    }
+
+    .hero {
+      background-color: var(--primary-color);
+      background-color: #3a6ee8;
+      color: var(--primary-text-color);
+      color: #ffffff;
+      min-height: calc(90vh - 6rem);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 0;
+    }
+
+    .hero-grid {
+      justify-content: center;
+    }
+
+    .hero-column {
+      padding: 0 1.5rem;
+      max-width: 600px;
+    }
+
+    .hero-column:first-child {
+      padding-left: 3rem;
+    }
+
+    .hero-column:last-child {
+      padding-right: 3rem;
+    }
+
+    .hero-callout {
+      font-size: 2.2em;
+      margin: 0;
+      text-align: right;
+    }
+
+    .grid-img img {
+      object-fit: contain;
+    }
+
+    .align-center {
+      text-align: center;
+    }
+
+    .morphing-button {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 50vw;
+      text-decoration: none;
+      color: var(--primary-color);
+      color: #3a6ee8;
+    }
+
+    .morphing-circle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 6px solid var(--primary-color);
+      border: 6px solid #3a6ee8;
+      border-radius: 50%;
+      padding: 3rem;
+      width: 40%;
+      height: 40%;
+      transition: all .3s ease-in-out;
+    }
+
+    .morphing-button__invert {
+      background-color: var(--primary-color);
+      background-color: #3a6ee8;
+      color: var(--primary-text-color);
+      color: #ffffff;
+    }
+
+    .morphing-button__invert .morphing-circle {
+      border: 6px solid var(--primary-text-color);
+      border: 6px solid #ffffff;
+    }
+
+    .morphing-button:hover .morphing-circle {
+      border-radius: 0;
+    }
+
+    .morphing-circle h4 {
+      font-size: 0.8em;
+      margin: 0;
+      font-style: italic;
+    }
+
+    .morphing-circle h3 {
+      font-size: 2em;
+      margin: 0;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    .bigger {
+      flex: 2.5;
+    }
+
+    .halves .column {
+      flex: 0 0 50%;
+    }
+
+    .thirds .column {
+      flex: 0 0 33.3333%;
+    }
+
+    .fourths .column {
+      flex: 0 0 25%;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        display: block;
+      }
+
+      .hero-column {
+        padding: 0 3rem;
+        max-width: unset;
+      }
+
+      .hero-callout {
+        text-align: unset;
+      }
+
+      .morphing-button {
+        height: 100vw;
+      }
+
+      .actions {
+        margin-top: 0;
+      }
+    }
+
+    .sidebar {
+      background-color: #ffffff;
+    }
+
+    .sidebar>a {
+      display: block;
+      width: 90vw;
+      max-width: 250px;
+      padding: 1rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--primary-color);
+      color: #3a6ee8;
+    }
+
+    .header-spacer {
+      height: 4rem;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background-color: var(--primary-color);
+      background-color: #3a6ee8;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      height: 4rem;
+      padding: 0 1rem;
+    }
+
+    .header-title {
+      flex: 1;
+    }
+
+    .header-title>a {
+      color: #ffffff;
+      font-size: 1.17em;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--primary-text-color);
+      color: #ffffff;
+    }
+
+    .border-menu {
+      position: relative;
+      padding-left: 1.25em;
+    }
+
+    .border-menu:before {
+      content: "";
+      position: absolute;
+      top: 0.25em;
+      left: 0;
+      width: 1em;
+      height: 0.125em;
+      border-top: 0.375em double #000;
+      border-bottom: 0.125em solid #000;
+    }
+  </style>
+
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+  </style><noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
+
+  <link rel="canonical" href=".">
+</head>
+
+<body>
+  <amp-sidebar class="sidebar" id="sidebar" layout="nodisplay" side="right">
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/contact.html">Contact</a>
+  </amp-sidebar>
+
+  <header>
+    <amp-img role="button" tabindex="0" on="tap:sidebar.open" src="images/hamburger.svg" width="2rem" height="2rem"
+      alt="Menu">
+    </amp-img>
+    <div class="header-title">
+      <a href="/">Jacob Ebey</a>
+    </div>
+  </header>
+  <div class="header-spacer"></div>
+
+  <article class="hero">
+    <div class="grid halves hero-grid">
+      <div class="column hero-column">
+        <h1 class="hero-callout">Hi. I’m Jacob, a software engineer from Seattle, Washington. Please take a look
+          around!</h1>
+      </div>
+      <div class="column hero-column">
+        <p>I am passionate about building excellent software that improves the lives of those around me. I specialize in
+          creating software for clients ranging from individuals and small-businesses all the way to large enterprise
+          corporations. All of my work is produced locally from Seattle, Washington. What would you do if you had a
+          software
+          expert available at your fingertips?</p>
+      </div>
+    </div>
+  </article>
+
+  <article>
+    <h2 class="align-center article-header">Favorite Technologies</h2>
+
+    <div class="grid fourths">
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/graphql.svg" height="100" alt="GraphQL logo">
+        </amp-img>
+        <h3 class="align-center">GraphQL</h3>
+        <p class="align-center">When appropriate, GraphQL can be a powerful tool to build a comprehensive data-model for
+          your business or
+          applications.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/swagger.png" height="100" alt="Swagger logo">
+        </amp-img>
+        <h3 class="align-center">REST</h3>
+        <p class="align-center">A trusty old REST API is never out of the question.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/websockets.png" height="100" alt="Websockets logo">
+        </amp-img>
+        <h3 class="align-center">Web Sockets</h3>
+        <p class="align-center">Sometimes 'realtime' subscriptions to data are handy.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/mongodb.png" height="100" alt="MongoDB logo">
+        </amp-img>
+        <h3 class="align-center">MongoDB</h3>
+        <p class="align-center">Document databases can be an awesome jumping off point.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/neo4j.png" height="100" alt="Neo4j logo">
+        </amp-img>
+        <h3 class="align-center">Neo4j</h3>
+        <p class="align-center">Graph databases can give you opportunities for deep data analytics you may not have
+          planned for.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/svelte.svg" height="100" alt="Svelte logo">
+        </amp-img>
+        <h3 class="align-center">Svelte</h3>
+        <p class="align-center">Sometimes performance comes first and Svelte exists for this very reason.
+        </p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/react.png" height="100" alt="React logo">
+        </amp-img>
+        <h3 class="align-center">React</h3>
+        <p class="align-center">From class components to hooks, I'm ready to dive deep into a react based project.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/amp.svg" height="100" alt="Google AMP logo">
+        </amp-img>
+        <h3 class="align-center">AMP</h3>
+        <p class="align-center">Working within a framework can lead to some great results, just take this page into
+          consideration.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/azure.png" height="100" alt="Azure logo">
+        </amp-img>
+        <h3 class="align-center">Azure</h3>
+        <p class="align-center">Devops in Azure made easy with Azure Resource Manager (ARM) templates.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/zeit-now.jpeg" height="100" alt="Azure logo">
+        </amp-img>
+        <h3 class="align-center">Zeit Now</h3>
+        <p class="align-center">Static frontends and serverless backends made easy.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/heroku.png" height="100" alt="Azure logo">
+        </amp-img>
+        <h3 class="align-center">Heroku</h3>
+        <p class="align-center">Sometimes containerized applications are a must, and Heroku is here to assist us.</p>
+      </div>
+
+      <div class="column">
+        <amp-img class="grid-img" layout="flex-item" src="images/xamarin.png" height="100" alt="Azure logo">
+        </amp-img>
+        <h3 class="align-center">Xamarin</h3>
+        <p class="align-center">Let's get our mobile on!</p>
+      </div>
+    </div>
+  </article>
+
+  <br />
+
+  <div class="grid halves actions">
+    <div class="column">
+      <a href="about.html" class="morphing-button">
+        <div class="morphing-circle">
+          <h4>Continue Exploring?</h4>
+          <h3>About Me</h3>
+        </div>
+      </a>
+    </div>
+    <div class="column">
+      <a href="contact.html" class="morphing-button morphing-button__invert">
+        <div class="morphing-circle">
+          <h4>Convinced?</h4>
+          <h3>Contact Me</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2019 Jacob Ebey</p>
+    <a href="https://github.com/jacob-ebey">
+      <amp-img src="images/github.png" width="50" height="50" alt="Github logo">
+      </amp-img>
+    </a>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,634 @@
+<!doctype html>
+<html ⚡ lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Resume | Jacob Ebey</title>
+  <meta name="description" content="Jacob Ebey's portfolio.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-list-0.1.js">
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-mustache-0.2.js">
+  <link rel="preload" as="script" href="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js">
+  <link rel="preload" as="fetch" href="data/resume.json">
+  <link rel="preconnect dns-prefetch" href="https://fonts.googleapis.com/" crossorigin>
+  <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
+
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+  <style amp-custom>
+    :root {
+      --primary-color: #3a6ee8;
+      --primary-text-color: #ffffff;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14pt;
+    }
+
+    footer {
+      display: flex;
+      background-color: #000000;
+      color: #777777;
+      overflow: hidden;
+      padding: 1rem 3rem;
+      font-size: 0.8em;
+    }
+
+    footer>p {
+      flex: 1;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    .bigger {
+      flex: 2.5;
+    }
+
+    .halves .column {
+      flex: 0 0 50%;
+    }
+
+    .thirds .column {
+      flex: 0 0 33.3333%;
+    }
+
+    .fourths .column {
+      flex: 0 0 25%;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        display: block;
+      }
+    }
+
+    .sidebar {
+      background-color: #ffffff;
+    }
+
+    .sidebar>a {
+      display: block;
+      width: 90vw;
+      max-width: 250px;
+      padding: 1rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--primary-color);
+      color: #3a6ee8;
+    }
+
+    .header-spacer {
+      height: 4rem;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background-color: var(--primary-color);
+      background-color: #3a6ee8;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      height: 4rem;
+      padding: 0 1rem;
+    }
+
+    .header-title {
+      flex: 1;
+    }
+
+    .header-title>a {
+      color: #ffffff;
+      font-size: 1.17em;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--primary-text-color);
+      color: #ffffff;
+    }
+
+    .border-menu {
+      position: relative;
+      padding-left: 1.25em;
+    }
+
+    .border-menu:before {
+      content: "";
+      position: absolute;
+      top: 0.25em;
+      left: 0;
+      width: 1em;
+      height: 0.125em;
+      border-top: 0.375em double #000;
+      border-bottom: 0.125em solid #000;
+    }
+
+    .resume {
+      height: min-content;
+      padding: 2rem;
+    }
+
+    .resume_header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume_image img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .resume_summary {
+      flex: 1;
+      text-align: center;
+    }
+
+    .resume_summary h1 {
+      color: #3a6ee8;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+
+    .resume_summary h2 {
+      font-weight: 300;
+      margin: 0.5em 0;
+    }
+
+    .resume_contact div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .resume_contact div a,
+    .resume_contact .resume_downloads a {
+      color: #3a6ee8;
+      display: block;
+      margin: 0.5em;
+      text-decoration: none;
+    }
+
+    .resume_contact div p {
+      margin: 0.5em;
+    }
+
+    .resume_contact .resume_downloads {
+      text-align: center;
+    }
+
+    .resume_downloads {
+      margin-top: 1em;
+    }
+
+    .resume_downloads a {
+      display: inline-block;
+    }
+
+    .resume_downloads a svg {
+      height: 1.5em;
+    }
+
+    .resume_section-label {
+      color: #3a6ee8;
+      font-size: 1.5em;
+      font-weight: 400;
+    }
+
+    .resume_section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resume_section .resume_section-title a,
+    .resume_section .resume_section-title p {
+      font-weight: 400;
+      font-size: 1.2em;
+      color: black;
+      text-decoration: none;
+      margin: 0.5em 0;
+    }
+
+    .resume_section-date {
+      font-size: 0.8em;
+    }
+
+    .resume_keyword {
+      background-color: #3a6ee8;
+      color: white;
+      display: inline-block;
+      margin-right: 1em;
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      font-size: 0.75em;
+      margin-bottom: 0.5em;
+    }
+
+    @media (min-width: 1024px) {
+      .resume hr {
+        margin-right: calc(208px + 1em);
+      }
+
+      .resume_header {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .resume_summary {
+        text-align: start;
+        padding-right: 1em;
+      }
+
+      .resume_contact {
+        width: 208px;
+      }
+
+      .resume_contact div {
+        display: block;
+        flex-wrap: unset;
+        border-left: 1px solid #ccc;
+        padding-left: 1em;
+      }
+
+      .resume_contact div a {
+        margin: 0.5em 0;
+      }
+
+      .resume_contact div p {
+        margin: 0.5em 0;
+      }
+
+      .resume_contact .resume_downloads {
+        text-align: unset;
+      }
+
+      .resume_section article {
+        margin-right: calc(208px + 1em);
+      }
+
+      .resume_section-title {
+        display: flex;
+        align-items: center;
+      }
+
+      .resume_section-title a {
+        flex: 1;
+      }
+    }
+
+    blockquote {
+      padding: 1em;
+      border-left: 5px solid #999;
+      margin: 0;
+    }
+
+    blockquote:before {
+      display: none;
+    }
+
+    blockquote:not(:first-of-type) {
+      margin-top: 0.5em;
+    }
+
+    blockquote p {
+      color: #555;
+      font-size: 12pt;
+      line-height: 1.4;
+      font-family: "PT Serif", Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+    }
+
+    blockquote footer {
+      background-color: unset;
+      margin-top: 0.5em;
+      padding: 0;
+      color: #777;
+      font-size: 12pt;
+      text-align: left;
+      font-style: italic;
+    }
+
+    blockquote footer:before {
+      content: "— ";
+    }
+
+    blockquote:nth-of-type(even) {
+      text-align: right;
+      border-left: none;
+      border-right: 5px solid #999;
+    }
+
+    blockquote:nth-of-type(even) footer {
+      text-align: right;
+    }
+
+    blockquote:nth-of-type(even) footer:before {
+      content: "";
+    }
+
+    blockquote:nth-of-type(even) footer:after {
+      content: " —";
+    }
+
+    @media screen and (min-width: 300px) {
+      blockquote {
+        padding: 1em 20% 1em 1em;
+      }
+
+      blockquote p {
+        font-size: 14pt;
+      }
+
+      blockquote:nth-of-type(even) {
+        padding: 1em 1em 1em 20%;
+      }
+    }
+
+    @media print {
+      body {
+        font-size: 11pt;
+      }
+      header, .header-spacer {
+        display: none;
+      }
+
+      .resume {
+        padding: 0 1em;
+      }
+
+      .resume_contact .resume_downloads {
+        display: none;
+      }
+    }
+  </style>
+
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden;
+      }
+
+      to {
+        visibility: visible;
+      }
+    }
+  </style><noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
+
+  <link rel="canonical" href=".">
+</head>
+
+<body>
+  <amp-sidebar class="sidebar" id="sidebar" layout="nodisplay" side="right">
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/resume.html">Resume</a>
+    <a href="/contact.html">Contact</a>
+  </amp-sidebar>
+
+  <header>
+    <amp-img role="button" tabindex="0" on="tap:sidebar.open" src="images/hamburger.svg" width="2rem" height="2rem"
+      alt="Menu">
+    </amp-img>
+    <div class="header-title">
+      <a href="/">Jacob Ebey</a>
+    </div>
+  </header>
+  <div class="header-spacer"></div>
+
+  <!-- <amp-state id="resume" src="/data/resume.json"></amp-state> -->
+
+  <div class="wrapper">
+    <amp-list src="/data/resume.json" items="." single-item layout="fixed-height" height="90vh">
+      <template type="amp-mustache">
+        <div class="resume">
+          <div class="resume_header">
+            <div class="resume_summary">
+              <h1>{{basics.name}}</h1>
+              <h2>{{basics.label}}</h2>
+              <p>{{basics.summary}}</p>
+            </div>
+            <div class="resume_contact">
+              <div>
+                <a href="mailto:{{basics.email}}">{{basics.email}}</a>
+                <p>{{basics.phone}}</p>
+                <a href="{{basics.website}}">{{basics.website}}</a>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="resume_section-label">Experience</h1>
+
+          {{#work}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <a href={{website}}>{{company}} <small>- {{position}}</small></a>
+                <p class="resume_section-date">{{startDate}} - {{endDate}}</p>
+              </div>
+              <p>{{summary}}</p>
+              <ul>
+                {{#highlights}}
+                <li>{{.}}</li>
+                {{/highlights}}
+              </ul>
+            </article>
+          </div>
+          {{/work}}
+
+          <h1 class="resume_section-label">Skills</h1>
+
+          {{#skills}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <p>{{name}} <small>- {{level}}</small></p>
+              </div>
+              <p>
+                {{#keywords}}
+                <span class="resume_keyword">{{.}}</span>
+                {{/keywords}}
+              </p>
+            </article>
+          </div>
+          {{/skills}}
+
+          <h1 class="resume_section-label">Volunteer</h1>
+
+          {{#volunteer}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <a href={volunteer.website}>{{organization}} <small>- {{position}}</small></a>
+                <p class="resume_section-date">{{startDate}} - {{endDate}}</p>
+              </div>
+              <p>{{summary}}</p>
+              <ul>
+                {{#highlights}}
+                <li>{{.}}</li>
+                {{/highlights}}
+              </ul>
+            </article>
+          </div>
+          {{/volunteer}}
+
+          <h1 class="resume_section-label">Awards</h1>
+
+          {{#awards}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <p>{{title}} <small>- {{awarder}} - {{date}}</small></p>
+              </div>
+              <p>{{summary}}</p>
+              <ul>
+                {{#highlights}}
+                <li>{{.}}</li>
+                {{/highlights}}
+              </ul>
+            </article>
+          </div>
+          {{/awards}}
+
+          <h1 class="resume_section-label">Languages</h1>
+
+          {{#languages}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <p>{{language}} <small>- {{fluency}}</small></p>
+              </div>
+            </article>
+          </div>
+          {{/languages}}
+
+          <h1 class="resume_section-label">Interests</h1>
+
+          {{#interests}}
+          <div class="resume_section">
+            <article>
+              <div class="resume_section-title">
+                <p>{{name}}</p>
+              </div>
+              <p>
+                {{#keywords}}
+                <span class="resume_keyword">{{.}}</span>
+                {{/keywords}}
+              </p>
+            </article>
+          </div>
+          {{/interests}}
+
+          <h1 class="resume_section-label">References</h1>
+          <div class="resume_section">
+            <article>
+              {{#references}}
+              <blockquote>
+                <p><q>{{reference}}</q></p>
+                <footer>{{name}}</footer>
+              </blockquote>
+              {{/references}}
+            </article>
+          </div>
+        </div>
+  </div>
+  </template>
+  </amp-list>
+  </div>
+
+  <footer>
+    <p>© 2019 Jacob Ebey</p>
+    <a href="https://github.com/jacob-ebey">
+      <amp-img src="images/github.png" width="50" height="50" alt="Github logo">
+      </amp-img>
+    </a>
+  </footer>
+</body>
+
+</html>
