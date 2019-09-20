@@ -1,9 +1,18 @@
 <script>
   import resume from "../resume.json";
+  import { useScroll } from "../utilities/scroll";
 
   export let segment;
 
   let open = false;
+
+  const scroll = useScroll();
+
+  $: if (open) {
+    scroll.disable();
+  } else {
+    scroll.enable();
+  }
 </script>
 
 <style type="text/sass">
