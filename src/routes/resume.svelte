@@ -210,6 +210,10 @@
   }
 </style>
 
+<svelte:head>
+  <title>Resume | Jacob Ebey</title>
+</svelte:head>
+
 {#if resume}
   <div class="resume">
     <div class="resume_header">
