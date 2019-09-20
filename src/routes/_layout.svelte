@@ -5,7 +5,17 @@
   export let segment;
 </script>
 
-<style>
+<style type="text/sass">
+  @import "../_variables";
+
+  :global(a) {
+    color: $primary-color;
+  }
+
+  :global(a:hover) {
+    color: darken($primary-color, 30%);
+  }
+
   main {
     flex: 1;
   }

@@ -151,6 +151,7 @@
 <nav class="sidenav" class:sidenav-open={open}>
   <a on:click={() => (open = false)} href="/">Home</a>
   <a on:click={() => (open = false)} href="/about">About</a>
+  <a on:click={() => (open = false)} href="/blog">Blog</a>
   <a on:click={() => (open = false)} href="/resume">Resume</a>
   <a on:click={() => (open = false)} href="/contact">Contact</a>
 </nav>

@@ -22,9 +22,14 @@ body {
 	position: relative;
 }
 
+pre {
+	overflow: auto;
+	padding: 1rem;
+}
+
 .noscroll {
 	position: fixed;
-  overflow-y: scroll;
-  left: 0;
-  right: 0;
+	overflow-y: hidden;
+	left: 0;
+	right: 0;
 }
