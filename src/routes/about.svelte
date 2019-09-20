@@ -39,10 +39,19 @@
   .hero-img-column {
     height: 90vh;
     position: relative;
+    padding: 0 !important;
   }
 
   .hero-img-column img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .hero-column {
+      padding: 5rem 2rem;
+    }
   }
 </style>
 

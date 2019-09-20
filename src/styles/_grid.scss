@@ -8,10 +8,6 @@
 	flex: 1;
 }
 
-.bigger {
-	flex: 2.5;
-}
-
 .halves .column {
 	flex: 0 0 50%;
 }
@@ -27,22 +23,5 @@
 @media (max-width: 900px) {
 	.grid {
 		display: block;
-	}
-
-	.hero-column {
-		padding: 0 3rem;
-		max-width: unset;
-	}
-
-	.hero-callout {
-		text-align: unset;
-	}
-
-	.morphing-button {
-		height: 100vw;
-	}
-
-	.actions {
-		margin-top: 0;
 	}
 }

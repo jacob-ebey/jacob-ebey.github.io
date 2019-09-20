@@ -108,10 +108,6 @@
   }
 
   @media (max-width: 900px) {
-    .grid {
-      display: block;
-    }
-
     .hero-column {
       padding: 0 3rem;
       max-width: unset;
@@ -237,7 +233,7 @@
       <h3 class="align-center">Svelte</h3>
       <p class="align-center">
         Sometimes performance comes first and Svelte exists for this very
-        reason.
+        reason, just take this page into consideration.
       </p>
     </div>
 
@@ -264,8 +260,7 @@
         alt="Google AMP logo" />
       <h3 class="align-center">AMP</h3>
       <p class="align-center">
-        Working within a framework can lead to some great results, just take
-        this page into consideration.
+        Working within a framework can lead to some great results for the users.
       </p>
     </div>
 
