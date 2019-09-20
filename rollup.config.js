@@ -25,8 +25,8 @@ export default {
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
-      }),
-      json(),
+			}),
+			json(),
 			svelte({
 				dev,
 				hydratable: true,
@@ -81,8 +81,8 @@ export default {
 			replace({
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
-      }),
-      json(),
+			}),
+			json(),
 			svelte({
 				generate: 'ssr',
 				dev,

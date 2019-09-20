@@ -17,6 +17,13 @@
       display: none;
     }
   }
+
+  /* IE 10 hack to hide footer because IE's flexbox is all fucked up. */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    footer {
+      display: none;
+    }
+  }
 </style>
 
 <footer>
