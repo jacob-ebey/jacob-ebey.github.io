@@ -112,6 +112,10 @@
   }
 </style>
 
+<svelte:head>
+  <title>Contact | Jacob Ebey</title>
+</svelte:head>
+
 <form
   class="boilerform"
   action="https://formspree.io/{resume.basics.email}"
