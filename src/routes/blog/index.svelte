@@ -1,32 +1,32 @@
 <script context="module">
   import { url } from "../../blog.json";
 
-  export function preload(page, session) {
-    return this.fetch(url, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: `{
-          blog: blogPostsConnection(where: {
+  export async function preload(page, session) {
+    const res = await this.fetch(
+      url,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `{
+          posts: blogPosts(where: {
             status: PUBLISHED
           }) {
-            pageInfo {
-              hasNextPage
-              hasPreviousPage
-            }
-            posts: edges {
-              data: node {
-                slug
-                title
-                summary
-              }
-            }
+            slug
+            title
+            summary
           }
         }`
-      })
-    })
-      .then(res => res.json())
-      .then(json => json.data.blog);
+        })
+      }
+    );
+    const json = await res.json();
+
+    if (res.status === 200) {
+      return json.data;
+    } else {
+      this.error(res.status, json && json.errors);
+    }
   }
 </script>
 
@@ -60,20 +60,24 @@
   }
 </style>
 
+<svelte:head>
+  <title>Blog | Jacob Ebey</title>
+</svelte:head>
+
 <div class="hero">
   <h1>Some random thoughts you might be interested in</h1>
 </div>
 
 <div class="posts">
-  {#each posts as post, index}
+  {#each posts as post, index (post.slug)}
     {#if index > 0}
       <hr />
     {/if}
     <article class="post">
       <h2>
-        <a href="/blog/post/{post.data.slug}">{post.data.title}</a>
+        <a href="/blog/post/{post.slug}">{post.title}</a>
       </h2>
-      <p>{post.data.summary}</p>
+      <p>{post.summary}</p>
     </article>
   {/each}
 </div>

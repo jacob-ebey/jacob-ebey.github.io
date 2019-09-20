@@ -1,38 +1,50 @@
 <script context="module">
   import { url } from "../../../blog.json";
 
-  export function preload(page, session) {
-    const { slug } = page.params;
-
-    return this.fetch(url, {
+  export async function preload({ params, query }) {
+    // the `slug` parameter is available because
+    // this file is called [slug].svelte
+    const res = await this.fetch(url, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         query: `query Post($slug: String) {
-          post: blogPost(where: {
-            slug: $slug
-          }) {
-            slug
-            createdAt
-            title
-            content
-          }
-        }`,
+            post: blogPost(where: {
+              slug: $slug
+            }) {
+              slug
+              createdAt
+              title
+              content
+            }
+          }`,
         variables: {
-          slug
+          slug: params.slug
         }
       })
-    })
-      .then(res => res.json())
-      .then(json => json.data);
+    });
+    const json = await res.json();
+
+    if (res.status === 200) {
+      return json.data;
+    } else {
+      this.error(res.status, json && json.errors);
+    }
   }
 </script>
 
 <script>
-  import resume from "../../../resume.json";
   import marked from "marked";
+  import Prism from "prismjs";
+  import { onMount } from "svelte";
+
+  import resume from "../../../resume.json";
 
   export let post;
+
+  onMount(() => {
+    Prism.highlightAll();
+  });
 </script>
 
 <style type="text/sass">
@@ -58,6 +70,11 @@
     max-width: 100%;
   }
 </style>
+
+<svelte:head>
+  <title>Blog | Jacob Ebey</title>
+  <link rel='stylesheet' href='3rdparty/prism-okaidia.css'>
+</svelte:head>
 
 <div class="hero">
   <h1>{post.title}</h1>
