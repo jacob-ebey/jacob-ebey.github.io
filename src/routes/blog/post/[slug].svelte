@@ -1,34 +1,30 @@
 <script context="module">
+  import client from "../../../tinyClient";
   import { url } from "../../../blog.json";
 
   export async function preload({ params, query }) {
-    // the `slug` parameter is available because
-    // this file is called [slug].svelte
-    const res = await this.fetch(url, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: `query Post($slug: String) {
-            post: blogPost(where: {
-              slug: $slug
-            }) {
-              slug
-              createdAt
-              title
-              content
-            }
-          }`,
-        variables: {
-          slug: params.slug
+    const res = await client.execute({
+      query: `
+        query Post($slug: String) {
+          post: blogPost(where: {
+            slug: $slug
+          }) {
+            slug
+            createdAt
+            title
+            content
+          }
         }
-      })
+      `,
+      variables: {
+        slug: params.slug
+      }
     });
-    const json = await res.json();
 
-    if (res.status === 200) {
-      return json.data;
+    if (res.data) {
+      return res.data;
     } else {
-      this.error(res.status, json && json.errors);
+      this.error(500, json && res.errors);
     }
   }
 </script>
@@ -73,7 +69,7 @@
 
 <svelte:head>
   <title>Blog | Jacob Ebey</title>
-  <link rel='stylesheet' href='3rdparty/prism-okaidia.css'>
+  <link rel="stylesheet" href="3rdparty/prism-okaidia.css" />
 </svelte:head>
 
 <div class="hero">

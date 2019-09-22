@@ -1,14 +1,11 @@
 <script context="module">
+  import client from "../../tinyClient";
   import { url } from "../../blog.json";
 
   export async function preload(page, session) {
-    const res = await this.fetch(
-      url,
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          query: `{
+    const res = await client.execute({
+      query: `
+        {
           posts: blogPosts(where: {
             status: PUBLISHED
           }) {
@@ -16,16 +13,14 @@
             title
             summary
           }
-        }`
-        })
-      }
-    );
-    const json = await res.json();
+        }
+      `
+    });
 
-    if (res.status === 200) {
-      return json.data;
+    if (res.data) {
+      return res.data;
     } else {
-      this.error(res.status, json && json.errors);
+      this.error(500, res.errors);
     }
   }
 </script>
