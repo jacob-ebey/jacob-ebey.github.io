@@ -32,7 +32,14 @@
 <div class="posts">
   <article class="post">
     <h2>
-      <a href="https://jacob-ebey.js.org/simple-ux/">Simple UX</a>
+      <a href="/projects/movie-explorer">Movie Explorer</a>
+    </h2>
+    <p>A simple android application to browse movies that I used to learn MvvmCross.</p>
+  </article>
+  
+  <article class="post">
+    <h2>
+      <a href="/projects/simple-ux">Simple UX</a>
     </h2>
     <p>Simple yet elegant components for Preact.</p>
   </article>
