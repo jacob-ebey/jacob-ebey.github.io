@@ -6,9 +6,7 @@
     const res = await client.execute({
       query: `
         {
-          posts: blogPosts(where: {
-            status: PUBLISHED
-          }) {
+          posts: blogPosts(where: {status: PUBLISHED}, orderBy: createdAt_DESC) {
             slug
             title
             summary

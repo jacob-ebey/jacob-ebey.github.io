@@ -665,10 +665,10 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.3.tgz#7a56e747ec94622e8513b406c53cc1729799de09"
   integrity sha512-Uom7l6OeP6vcf85lMImelYu5WKVWjXyhkpi9WsRdRzlJFJFPVhjBtBCktgDUj7dk1N5FURUdegSZ5XOjxf8JZg==
 
-"@tiny-graphql/core@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@tiny-graphql/core/-/core-0.0.1.tgz#55f3ee653d5df35729f42b04debcb97acaaa0e3b"
-  integrity sha512-gC/7o+lSHfecz5XLOjHQHulAws/oe3yWcHaAh1Q45JH14IspQvkN5D8qqxHqiCTFMa88l/ffuNIuvR/3uz/9nA==
+"@tiny-graphql/core@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@tiny-graphql/core/-/core-0.0.2.tgz#4e3b71baea1dcdfb27017222239b333de1e4517e"
+  integrity sha512-LXVQXMvk4Er8Rd+VzFZ+j0slBNFhuzxCBZW1EjhDaOA7xTejD1lglNwvNoIRH8FUebhNN0rU2cHB7BES7Yw+PQ==
   dependencies:
     isomorphic-unfetch "^3.0.0"
 
@@ -2404,6 +2404,13 @@ rollup-plugin-replace@^2.0.0:
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
+rollup-plugin-string@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-string/-/rollup-plugin-string-3.0.0.tgz#fed2d6301fae1e59eb610957df757ef13fada3f0"
+  integrity sha512-vqyzgn9QefAgeKi+Y4A7jETeIAU1zQmS6VotH6bzm/zmUQEnYkpIGRaOBPY41oiWYV4JyBoGAaBjYMYuv+6wVw==
+  dependencies:
+    rollup-pluginutils "^2.4.1"
+
 rollup-plugin-svelte@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-5.1.0.tgz#6c2d3998db9141a934343a0e7298499994aadd25"
@@ -2423,7 +2430,7 @@ rollup-plugin-terser@^4.0.4:
     serialize-javascript "^1.6.1"
     terser "^3.14.1"
 
-rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.8.1:
+rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.4.1, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.8.1:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
