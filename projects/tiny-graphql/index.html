@@ -1,0 +1,32 @@
+<!doctype html> <html lang=en> <head> <meta charset=utf-8> <meta content="Jacob Ebey's portfolio." name=description> <meta content="width=device-width,initial-scale=1" name=viewport> <meta content=#3a6ee8 name=theme-color> <link href=images/apple-touch-icon.png rel=apple-touch-icon sizes=180x180> <link href=images/favicon-32x32.png rel=icon sizes=32x32 type=image/png> <link href=images/favicon-16x16.png rel=icon sizes=16x16 type=image/png> <link href=manifest.json rel=manifest> <base href=/ > <link href=https://fonts.googleapis.com/ rel="preconnect dns-prefetch" crossorigin> <link href=https://fonts.gstatic.com/ rel="preconnect dns-prefetch" crossorigin> <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel=stylesheet> <link href=global.css rel=stylesheet> <link href=client/main.670329837.css rel=stylesheet><link href=client/tiny-graphql.11bb06d8.css rel=stylesheet> <noscript id=sapper-head-start></noscript><title>Tiny GraphQL | Jacob Ebey</title><link href=3rdparty/prism-okaidia.css rel=stylesheet><noscript id=sapper-head-end></noscript> </head> <body> <div id=sapper> <noscript> <style>.sidenav{position:relative!important;display:flex;height:unset!important;width:unset!important;padding-top:0!important}</style> </noscript> <div class="svelte-1k0tcv8 sidenav-overlay"></div> <header class=svelte-1k0tcv8> <img alt=Menu src=images/hamburger.svg class="svelte-1k0tcv8 header-button" role=button tabindex=0> <div class="svelte-1k0tcv8 header-title"> <a href=/ class=svelte-1k0tcv8>Jacob Ebey</a> </div> </header> <div class="svelte-1k0tcv8 header-spacer"></div> <nav class="svelte-1k0tcv8 sidenav"> <a href=/ class=svelte-1k0tcv8>Home</a> <a href=/about class=svelte-1k0tcv8>About</a> <a href=/blog class=svelte-1k0tcv8>Blog</a> <a href=/projects class=svelte-1k0tcv8>Projects</a> <a href=/resume class=svelte-1k0tcv8>Resume</a> <a href=/contact class=svelte-1k0tcv8>Contact</a> </nav> <main class=svelte-1072fkp> <div class="svelte-11ja2ox hero"> <h1>Tiny GraphQL</h1> </div> <div class="svelte-11ja2ox content"> <p>A tiny GraphQL client for making your dev and user experience better than ever.</p> <h2 id=truly-tiny>Truly tiny</h2> <p><strong>Core</strong></p> <p><a href=https://www.npmjs.com/package/@tiny-graphql/core>https://www.npmjs.com/package/@tiny-graphql/core</a></p> <p><img alt=core src=https://badgen.net/bundlephobia/minzip/@tiny-graphql/core></p> <p>Everything you need to get going query for data and perform mutations lives in it's own package.</p> <p><strong>Cache</strong></p> <p><a href=https://www.npmjs.com/package/@tiny-graphql/cache>https://www.npmjs.com/package/@tiny-graphql/cache</a></p> <p><img alt=cache src=https://badgen.net/bundlephobia/minzip/@tiny-graphql/cache></p> <p>For more advanced use-cases caching may be wanted and can easily be added by including the package.</p> <h2 id=installation>Installation</h2> <pre><code class=language-shell>> npm install -s @tiny-graphql/core</code></pre> <p>Optionaly install the cache as well</p> <pre><code class=language-shell>> npm install -s @tiny-graphql/core @tiny-graphql/cache</code></pre> <h2 id=usage>Usage</h2> <pre><code class=language-javascript>import { createClient } from '@tiny-graphql/core';
+import { createCache } from '@tiny-graphql/cache'; // Optional
+
+const client = createClient({
+  cache: createCache(), // Optional
+  url: '&lt;YOUR_URL>'
+});
+
+async function sayHello(name) {
+  const result = await client.execute({
+    query: `
+      query SayHello($name: String) {
+        hello(name: $name)
+      }
+    `,
+    variables: {
+      name: 'World'
+    }
+  });
+
+  if (result.errors || !result.data) {
+    throw new Error('Could not say hello');
+  }
+
+  return result.data.hello;
+}</code></pre> </div> </main> <footer class=svelte-10kjou9> <p class=svelte-10kjou9>© 2019 Jacob Ebey</p> <a href=https://github.com/jacob-ebey aria-label=Github> <amp-img alt="Github logo" height=50 src=images/github.png width=50></amp-img> </a> </footer></div> <script>if (!window.Promise || ![].includes || !Object.assign || !window.Map || !window.fetch) {
+      document['wr' + 'ite']('<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.find,Object.values"><\/script>')
+    }</script> <script>__SAPPER__={baseUrl:"",preloaded:[void 0,null,{readme:"\nA tiny GraphQL client for making your dev and user experience better than ever.\n\n## Truly tiny\n\n**Core**\n\nhttps:\u002F\u002Fwww.npmjs.com\u002Fpackage\u002F@tiny-graphql\u002Fcore\n\n![core](https:\u002F\u002Fbadgen.net\u002Fbundlephobia\u002Fminzip\u002F@tiny-graphql\u002Fcore)\n\nEverything you need to get going query for data and perform mutations lives in it's own package.\n\n**Cache**\n\nhttps:\u002F\u002Fwww.npmjs.com\u002Fpackage\u002F@tiny-graphql\u002Fcache\n\n![cache](https:\u002F\u002Fbadgen.net\u002Fbundlephobia\u002Fminzip\u002F@tiny-graphql\u002Fcache)\n\nFor more advanced use-cases caching may be wanted and can easily be added by including the package.\n\n## Installation\n\n```shell\n\u003E npm install -s @tiny-graphql\u002Fcore\n```\n\nOptionaly install the cache as well\n\n```shell\n\u003E npm install -s @tiny-graphql\u002Fcore @tiny-graphql\u002Fcache\n```\n\n## Usage\n\n```javascript\nimport { createClient } from '@tiny-graphql\u002Fcore';\nimport { createCache } from '@tiny-graphql\u002Fcache'; \u002F\u002F Optional\n\nconst client = createClient({\n  cache: createCache(), \u002F\u002F Optional\n  url: '\u003CYOUR_URL\u003E'\n});\n\nasync function sayHello(name) {\n  const result = await client.execute({\n    query: `\n      query SayHello($name: String) {\n        hello(name: $name)\n      }\n    `,\n    variables: {\n      name: 'World'\n    }\n  });\n\n  if (result.errors || !result.data) {\n    throw new Error('Could not say hello');\n  }\n\n  return result.data.hello;\n}\n```\n\n"}]};(function(){try{eval("async function x(){}");var main="/client/client.5b13ef01.js"}catch(e){main="/client/legacy/client.98b6a676.js"};var s=document.createElement("script");try{new Function("if(0)import('')")();s.src=main;s.type="module";s.crossOrigin="use-credentials";}catch(e){s.src="/client/shimport@1.0.1.js";s.setAttribute("data-main",main);}document.head.appendChild(s);}());</script> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110256706-1"></script> <script> window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110256706-1'); </script> 
