@@ -26,7 +26,7 @@
 </svelte:head>
 
 <div class="hero">
-  <h1>Some of the projects I have out there for others.</h1>
+  <h1>Some of the projects I have out in the world</h1>
 </div>
 
 <div class="posts">
