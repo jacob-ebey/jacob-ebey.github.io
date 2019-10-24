@@ -32,11 +32,23 @@
 <div class="posts">
   <article class="post">
     <h2>
+      <a href="/projects/go-graphql-boilerplate">Golang GraphQL Boilerplate</a>
+    </h2>
+    <p>
+      A simple to uses, deploys anywhere boilerplate to get you going in GO and GraphQL.
+    </p>
+  </article>
+
+  <article class="post">
+    <h2>
       <a href="/projects/movie-explorer">Movie Explorer</a>
     </h2>
-    <p>A simple android application to browse movies that I used to learn MvvmCross.</p>
+    <p>
+      A simple android application to browse movies that I used to learn
+      MvvmCross.
+    </p>
   </article>
-  
+
   <article class="post">
     <h2>
       <a href="/projects/simple-ux">Simple UX</a>
