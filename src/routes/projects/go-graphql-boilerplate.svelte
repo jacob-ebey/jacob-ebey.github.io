@@ -57,7 +57,7 @@
 </svelte:head>
 
 <div class="hero">
-  <h1>Movie Explorer</h1>
+  <h1>Golang GraphQL Boilerplate</h1>
 </div>
 
 <div class="content">
